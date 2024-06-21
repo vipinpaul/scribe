@@ -408,21 +408,21 @@ jobs:
   #         aur_username: ${{ secrets.AUR_USERNAME }}
   #         aur_email: ${{ secrets.AUR_EMAIL }}
 
-  snap:
-    needs:
-      - check
-      - build
-    runs-on: ubuntu-latest
-    env:
-      RELEASE_VERSION: ${{ needs.check.outputs.RELEASE_VERSION }}
-      SNAP_NAME: codium
-    strategy:
-      fail-fast: false
-      matrix:
-        platform:
-          - amd64
-          - arm64
-    if: needs.check.outputs.SHOULD_DEPLOY == 'yes' && vars.DISABLE_SNAP != 'yes'
+  # snap:
+  #   needs:
+  #     - check
+  #     - build
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     RELEASE_VERSION: ${{ needs.check.outputs.RELEASE_VERSION }}
+  #     SNAP_NAME: codium
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       platform:
+  #         - amd64
+  #         - arm64
+  #   if: needs.check.outputs.SHOULD_DEPLOY == 'yes' && vars.DISABLE_SNAP != 'yes'
 
   #   steps:
   #     - uses: actions/checkout@v3
