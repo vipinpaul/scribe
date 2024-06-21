@@ -28,20 +28,20 @@ if [[ "${VSCODE_ARCH}" == "x64" ]]; then
   sed -i 's/grep docker/# grep docker/' pkg2appimage.AppDir/usr/share/pkg2appimage/functions.sh
 
   if [[ "${VSCODE_QUALITY}" == "insider" ]]; then
-    sed -i 's|@@NAME@@|VSCodium-Insiders|g' recipe.yml
-    sed -i 's|@@APPNAME@@|codium-insiders|g' recipe.yml
-    sed -i 's|@@ICON@@|vscodium-insiders|g' recipe.yml
+    sed -i 's|@@NAME@@|Scribe-Insiders|g' recipe.yml
+    sed -i 's|@@APPNAME@@|Scribe-insiders|g' recipe.yml
+    sed -i 's|@@ICON@@|Scribe-insiders|g' recipe.yml
   else
-    sed -i 's|@@NAME@@|VSCodium|g' recipe.yml
-    sed -i 's|@@APPNAME@@|codium|g' recipe.yml
-    sed -i 's|@@ICON@@|vscodium|g' recipe.yml
+    sed -i 's|@@NAME@@|Scribe|g' recipe.yml
+    sed -i 's|@@APPNAME@@|Scribe|g' recipe.yml
+    sed -i 's|@@ICON@@|Scribe|g' recipe.yml
   fi
 
   bash -ex pkg2appimage.AppDir/AppRun recipe.yml
 
   rm -f pkg2appimage-*.AppImage
   rm -rf pkg2appimage.AppDir
-  rm -rf VSCodium*
+  rm -rf Scribe*
 fi
 
 cd "${CALLER_DIR}"
