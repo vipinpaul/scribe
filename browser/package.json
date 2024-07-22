@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "name": "browser",
+	"version": "1.0.0",
+  "dependencies": {
+    "@theia/callhierarchy": "1.51.0",
+    "@theia/file-search": "1.51.0",
+    "@theia/git": "latest",
+    "@theia/markers": "1.51.0",
+    "@theia/messages": "1.51.0",
+    "@theia/mini-browser": "1.51.0",
+    "@theia/navigator": "1.51.0",
+    "@theia/outline-view": "1.51.0",
+    "@theia/plugin-ext-vscode": "1.51.0",
+    "@theia/preferences": "1.51.0",
+    "@theia/preview": "latest",
+    "@theia/search-in-workspace": "1.51.0",
+    "@theia/terminal": "1.51.0",
+    "scribe-extensions":"0.0.1"
+  },
+  "devDependencies": {
+    "@theia/cli": "1.51.0"
+  },
+  "scripts": {
+    "prepare": "yarn run clean && yarn build:highMemory && yarn run download:plugins",
+    "clean": "theia clean",
+    "build": "theia build --mode development",
+    "build:highMemory": "NODE_OPTIONS=\"--max-old-space-size=5120\" theia build --mode development",
+    "start": "theia start --plugins=local-dir:plugins",
+    "download:plugins": "theia download:plugins"
+  },
+  "theiaPlugins": {
+    "vscode-builtin-extensions-pack": "https://open-vsx.org/api/eclipse-theia/builtin-extension-pack/1.50.1/file/eclipse-theia.builtin-extension-pack-1.50.1.vsix"
+  },
+  "theiaPluginsExcludeIds": [
+    "ms-vscode.js-debug-companion",
+    "vscode.extension-editing",
+    "vscode.git",
+    "vscode.git-ui",
+    "vscode.github",
+    "vscode.github-authentication",
+    "vscode.microsoft-authentication"
+  ]
+}

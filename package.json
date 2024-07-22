@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "engines": {
+    "yarn": ">=1.7.0 <2",
+    "node": ">=16"
+  },
+  "scripts": {
+    "build:browser": "yarn --cwd browser build",
+    "build:electron": "yarn --cwd electron-app build",
+    "prepare": "lerna run prepare",
+    "postinstall": "theia check:theia-version",
+    "start:browser": "yarn --cwd browser start",
+    "start:electron": "yarn --cwd electron-app start",
+    "watch:browser": "lerna run --parallel watch --ignore electron",
+    "watch:electron": "lerna run --parallel watch --ignore browser",
+    "dev:browser": "concurrently -n w-browser,w-extension,app -c blue,green,magenta \"yarn watch:browser\" \"cd scribe-theia && yarn watch\" \"yarn start:browser\"",
+    "dev:electron": "concurrently -n w-electron,w-extension,app -c blue,green,magenta \"yarn watch:electron\" \"cd scribe-theia && yarn watch\" \"yarn start:electron\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "lerna": "2.4.0"
+  },
+  "resolutions": {
+    "@types/puppeteer": "^5.4.0",
+    "@yarnpkg/parsers": "3.0.0-rc.44",
+    "**/multer": "1.4.4-lts.1",
+    "**/nan": "2.18.0",
+    "**/cpu-features": "0.0.9",
+    "**/**/nsfw": "1.2.7"
+  },
+  "workspaces": [
+    "browser",
+    "electron-app",
+    "scribe-extensions/*"
+  ]
+}
