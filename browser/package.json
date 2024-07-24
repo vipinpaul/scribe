@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "browser",
-	"version": "1.0.0",
+	"version": "0.0.1",
   "dependencies": {
     "@theia/callhierarchy": "1.51.0",
     "@theia/file-search": "1.51.0",
@@ -22,15 +22,11 @@
     "@theia/cli": "1.51.0"
   },
   "scripts": {
-    "prepare": "yarn run clean && yarn build:highMemory && yarn run download:plugins",
+    "prepare": "yarn run clean && yarn build:highMemory",
     "clean": "theia clean",
     "build": "theia build --mode development",
     "build:highMemory": "NODE_OPTIONS=\"--max-old-space-size=5120\" theia build --mode development",
-    "start": "theia start --plugins=local-dir:plugins",
-    "download:plugins": "theia download:plugins"
-  },
-  "theiaPlugins": {
-    "vscode-builtin-extensions-pack": "https://open-vsx.org/api/eclipse-theia/builtin-extension-pack/1.50.1/file/eclipse-theia.builtin-extension-pack-1.50.1.vsix"
+    "start": "theia start"
   },
   "theiaPluginsExcludeIds": [
     "ms-vscode.js-debug-companion",

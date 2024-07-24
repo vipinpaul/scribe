@@ -5,8 +5,8 @@
     "node": ">=16"
   },
   "scripts": {
-    "build:browser": "yarn --cwd browser build",
-    "build:electron": "yarn --cwd electron-app build",
+    "build:browser": "yarn --cwd browser build:highMemory",
+    "build:electron": "yarn --cwd electron-app build:highMemory",
     "prepare": "lerna run prepare",
     "postinstall": "theia check:theia-version",
     "start:browser": "yarn --cwd browser start",
