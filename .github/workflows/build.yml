@@ -46,7 +46,7 @@ jobs:
 
       - name: Packaging
         run: |
-          yarn build:electron
+          yarn build:prod
           yarn --cwd applications/electron package
 
       - name: Cleanup artifacts
