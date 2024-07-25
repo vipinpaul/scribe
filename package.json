@@ -29,7 +29,6 @@
     "**/**/nsfw": "1.2.7"
   },
   "workspaces": [
-    "browser",
     "applications/*",
     "scribe-extensions/*"
   ]

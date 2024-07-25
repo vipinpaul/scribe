@@ -60,13 +60,13 @@ jobs:
 
       - name: Cleanup artifacts
         run: |
-          npx rimraf "dist/!(*.deb|*.AppImage|*.dmg)"
+          npx rimraf "applications/electron/dist/!(*.deb|*.AppImage|*.dmg|*.exe)"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: Scribe
           path: applications/electron/dist
-          
+
       - name: List artifacts
         run: ls -R applications/electron/dist
