@@ -45,8 +45,9 @@ jobs:
           yarn --skip-integrity-check --network-timeout 100000
 
       - name: Packaging
-        yarn build:electron
-        yarn --cwd applications/electron package
+        run: |
+          yarn build:electron
+          yarn --cwd applications/electron package
 
       - name: Cleanup artifacts
         run: |
