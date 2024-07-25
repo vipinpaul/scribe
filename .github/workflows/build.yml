@@ -65,7 +65,7 @@ jobs:
       - name: Cleanup artifacts
         if: matrix.os != 'windows-2019'
         run: |
-          npx rimraf "applications/electron/dist/!(*.deb|*.AppImage|*.dmg|*.exe)"
+          npx rimraf "applications/electron/dist/!(*.deb|*.AppImage|*.dmg)"
             
       - name: Cleanup artifacts Win
         if: matrix.os == 'windows-2019'
@@ -73,11 +73,24 @@ jobs:
           mkdir artifacts
           mv applications/electron/dist/*.exe artifacts
 
-      - name: Upload artifacts
+      - name: Upload dist(Linux & Mac)
+        if: matrix.os != 'windows-2019'
         uses: actions/upload-artifact@v3
         with:
           name: Scribe
           path: applications/electron/dist
 
-      - name: List artifacts
-        run: ls -R applications/electron/dist
+      - name: Upload artifacts(Windows)
+        if: matrix.os == 'windows-2019'
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scribe
+          path: artifacts
+
+      - name: List artifacts-Linux
+        run: |
+          ls -R applications/electron/dist
+
+      - name: List artifacts-Windows
+        run: |
+          dir artifacts
