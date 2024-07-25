@@ -37,7 +37,7 @@ jobs:
           python-version: '3.10.8'
 
       - name: set max memory allocation
-          run: export NODE_OPTIONS=–max_old_space_size=5120
+        run: export NODE_OPTIONS=–max_old_space_size=5120
 
       - name: Build
         shell: bash
@@ -45,12 +45,12 @@ jobs:
           yarn --skip-integrity-check --network-timeout 100000
 
       - name: Packaging
-          yarn build:electron
-          yarn --cwd applications/electron package
+        yarn build:electron
+        yarn --cwd applications/electron package
 
       - name: Cleanup artifacts
-          run: |
-            npx rimraf "dist/!(*.deb|*.AppImage|*.dmg)"
+        run: |
+          npx rimraf "dist/!(*.deb|*.AppImage|*.dmg)"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
