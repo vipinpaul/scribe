@@ -37,16 +37,25 @@ jobs:
           python-version: '3.10.8'
 
       - name: set max memory allocation
-        run: export NODE_OPTIONS=–max_old_space_size=5120
+        shell: bash
+        run: |    
+          if [[ "$RUNNER_OS" == "Windows" ]]; then      
+            echo "NODE_OPTIONS=--max_old_space_size=5120" >> $GITHUB_ENV    
+          else      
+            export NODE_OPTIONS=--max_old_space_size=5120    
+          fi
 
-      - name: Build
+      - name: Install
         shell: bash
         run: |
           yarn --skip-integrity-check --network-timeout 100000
 
-      - name: Packaging
+      - name: Build
         run: |
           yarn build:prod
+
+      - name: Packaging
+        run: |
           yarn --cwd applications/electron package
 
       - name: Cleanup artifacts
@@ -58,3 +67,6 @@ jobs:
         with:
           name: Scribe
           path: applications/electron/dist
+          
+      - name: List artifacts
+        run: ls -R applications/electron/dist
