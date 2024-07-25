@@ -1,5 +1,5 @@
 {
-  "extends": "../configs/base.tsconfig",
+  "extends": "../../configs/base.tsconfig",
   "include": [],
   "compilerOptions": {
     "composite": true,
@@ -7,7 +7,7 @@
   },
   "references": [
     {
-      "path": "../scribe-extensions/core"
+      "path": "../../scribe-extensions/core"
     }
   ]
 }

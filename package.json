@@ -6,15 +6,13 @@
   },
   "scripts": {
     "build:browser": "yarn --cwd browser build:highMemory",
-    "build:electron": "yarn --cwd electron-app build:highMemory",
+    "build:electron": "yarn --cwd applications/electron build:highMemory",
     "prepare": "lerna run prepare",
     "postinstall": "theia check:theia-version",
     "start:browser": "yarn --cwd browser start",
-    "start:electron": "yarn --cwd electron-app start",
+    "start:electron": "yarn --cwd applications/electron start",
     "watch:browser": "lerna run --parallel watch --ignore electron",
-    "watch:electron": "lerna run --parallel watch --ignore browser",
-    "dev:browser": "concurrently -n w-browser,w-extension,app -c blue,green,magenta \"yarn watch:browser\" \"cd scribe-theia && yarn watch\" \"yarn start:browser\"",
-    "dev:electron": "concurrently -n w-electron,w-extension,app -c blue,green,magenta \"yarn watch:electron\" \"cd scribe-theia && yarn watch\" \"yarn start:electron\""
+    "watch:electron": "lerna run --parallel watch --ignore browser"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
@@ -30,7 +28,7 @@
   },
   "workspaces": [
     "browser",
-    "electron-app",
+    "applications/*",
     "scribe-extensions/*"
   ]
 }

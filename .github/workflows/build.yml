@@ -41,7 +41,7 @@ jobs:
         run: |
           yarn --skip-integrity-check --network-timeout 100000
           yarn build:electron
-          yarn --cwd electron-app package
+          yarn --cwd applications/electron package
         env:
           NODE_OPTIONS: --max_old_space_size=5120
           GITHUB_TOKEN: ${{ secrets.TOKEN }} # https://github.com/microsoft/vscode-ripgrep/issues/9
