@@ -1,4 +1,4 @@
-name: Build, package and test
+name: Build and Package
 
 on:
   push:
@@ -36,18 +36,24 @@ jobs:
         with:
           python-version: '3.10.8'
 
-      - name: Build and package
+      - name: set max memory allocation
+          run: export NODE_OPTIONS=–max_old_space_size=5120
+
+      - name: Build
         shell: bash
         run: |
           yarn --skip-integrity-check --network-timeout 100000
+
+      - name: Packaging
           yarn build:electron
           yarn --cwd applications/electron package
-        env:
-          NODE_OPTIONS: --max_old_space_size=5120
-          GITHUB_TOKEN: ${{ secrets.TOKEN }} # https://github.com/microsoft/vscode-ripgrep/issues/9
+
+      - name: Cleanup artifacts
+          run: |
+            npx rimraf "dist/!(*.deb|*.AppImage|*.dmg)"
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: Scribe
           path: applications/electron/dist

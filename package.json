@@ -6,7 +6,8 @@
   },
   "scripts": {
     "build:browser": "yarn --cwd browser build:highMemory",
-    "build:electron": "yarn --cwd applications/electron build:highMemory",
+    "build:electronDev": "yarn --cwd applications/electron build:highMemory",
+    "build:electron": "yarn --cwd applications/electron build",
     "prepare": "lerna run prepare",
     "postinstall": "theia check:theia-version",
     "start:browser": "yarn --cwd browser start",
