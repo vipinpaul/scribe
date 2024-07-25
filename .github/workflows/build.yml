@@ -59,8 +59,15 @@ jobs:
           yarn --cwd applications/electron package
 
       - name: Cleanup artifacts
+        if: "$RUNNER_OS" == "Windows"
         run: |
           npx rimraf "applications/electron/dist/!(*.deb|*.AppImage|*.dmg|*.exe)"
+            
+      - name: Cleanup artifacts Win
+        if: "$RUNNER_OS" == "Windows"
+        run: |
+          mkdir artifacts
+          mv applications/electron/dist/*.exe artifacts
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
