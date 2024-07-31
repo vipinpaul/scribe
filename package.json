@@ -5,6 +5,7 @@
     "node": ">=16"
   },
   "scripts": {
+    "clean":"lerna clean && rimraf node_modules",
     "build:browser": "yarn --cwd browser build:highMemory",
     "build:electron": "yarn --cwd applications/electron build:highMemory",
     "prepare": "lerna run prepare",

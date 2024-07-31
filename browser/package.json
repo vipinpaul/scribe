@@ -25,7 +25,7 @@
     "prepare": "yarn run clean",
     "development": "yarn build:highMemory",
     "production": "yarn build",
-    "clean": "theia clean",
+    "clean": "theia clean && rimraf node_modules",
     "build": "theia build --mode development",
     "build:highMemory": "NODE_OPTIONS=\"--max-old-space-size=5120\" theia build --mode development",
     "start": "theia start"

@@ -55,7 +55,7 @@
     "prepare": "yarn run clean",
     "development": "yarn build:style && yarn build",
     "production": "yarn build:style && yarn build",
-    "clean": "rimraf lib *.tsbuildinfo",
+    "clean": "rimraf lib node_modules *.tsbuildinfo",
     "build": "tsc -b",
     "lint": "eslint --ext js,jsx,ts,tsx src",
     "lint:fix": "eslint --ext js,jsx,ts,tsx src --fix",
