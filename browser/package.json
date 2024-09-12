@@ -16,7 +16,7 @@
     "@theia/preview": "1.51.0",
     "@theia/search-in-workspace": "1.51.0",
     "@theia/terminal": "1.51.0",
-    "scribe-extensions":"0.0.1"
+    "scribe-ui":"0.0.1"
   },
   "devDependencies": {
     "@theia/cli": "1.51.0"

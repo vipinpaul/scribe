@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "scribe-extensions",
+  "name": "scribe-ui",
   "version": "0.0.1",
-  "description": "Scribe v2 core extensions",
+  "description": "Scribe v2 ui extensions",
   "dependencies": {
     "@theia/core": "1.51.0",
     "@theia/toolbar": "1.51.0",
