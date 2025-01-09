@@ -56,7 +56,7 @@ jobs:
 
       - name: Packaging
         run: |
-          yarn --cwd applications/electron package
+          yarn --cwd applications/electron package:prod
 
       - name: Current OS
         run: |
