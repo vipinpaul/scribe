@@ -45,6 +45,11 @@ jobs:
             export NODE_OPTIONS=--max_old_space_size=5120    
           fi
 
+      - name: Update apt and install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libx11-dev libxkbfile-dev
+          
       - name: Install
         shell: bash
         run: |
