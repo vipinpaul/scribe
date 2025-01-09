@@ -35,7 +35,7 @@ jobs:
 
       - name: Update apt and install dependencies
         run: |
-          sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev libgconf-2-4
+          sudo apt-get install -y libx11-dev libxkbfile-dev libsecret-1-dev
 
       - name: Install dependencies
         run: yarn
