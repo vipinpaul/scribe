@@ -7,16 +7,17 @@ on:
 
 jobs:
 
-  build-ubuntu:
-    name: Build on Ubuntu, Node.js v${{ matrix.node }}
+  build-linux:
+    name: Build on Linux, Node.js v${{ matrix.node }}
     strategy:
       matrix:
         node: ['20.x']
+        arch: ['x86_64', 'arm64']
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
     env:
-      NODE_OPTIONS: --max_old_space_size=5120  # Directly set the environment variable for the Ubuntu job
+      NODE_OPTIONS: --max_old_space_size=5120
 
     steps:
       - name: Checkout
@@ -30,7 +31,7 @@ jobs:
           node-version: ${{ matrix.node }}
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Verify memory setting (Ubuntu)
+      - name: Verify memory setting (Linux)
         run: echo $NODE_OPTIONS
 
       - name: Update apt and install dependencies
@@ -43,14 +44,15 @@ jobs:
       - name: Build project
         run: yarn build:electronCICD
 
-      - name: Packaging
-        run: yarn --cwd applications/electron package:prod
+      - name: Packaging for Linux
+        run: |
+          yarn --cwd applications/electron package:prod --arch ${{ matrix.arch }}
 
-      - name: Cleanup artifacts (Linux & Mac)
+      - name: Cleanup artifacts (Linux)
         run: |
           npx rimraf "applications/electron/dist/!(*.deb|*.AppImage|*.dmg)"
 
-      - name: Upload dist(Linux & Mac)
+      - name: Upload dist(Linux)
         uses: actions/upload-artifact@v3
         with:
           name: Scribe
@@ -59,7 +61,6 @@ jobs:
       - name: List artifacts-Linux
         run: |
           ls -R applications/electron/dist
-
   build-windows:
     name: Build on Windows, Node.js v${{ matrix.node }}
     strategy:
