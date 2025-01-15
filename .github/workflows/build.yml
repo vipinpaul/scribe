@@ -8,7 +8,7 @@ on:
 jobs:
 
   build-linux:
-    name: Build on Linux, Node.js v${{ matrix.arch }}
+    name: Build on Linux, ${{ matrix.arch }}
     strategy:
       matrix:
         node: ['20.x']
@@ -46,7 +46,7 @@ jobs:
 
       - name: Packaging for Linux
         run: |
-          yarn --cwd applications/electron package:cicd --arch ${{ matrix.arch }}
+          yarn --cwd applications/electron package:cicd
 
       - name: Cleanup artifacts (Linux)
         run: |
@@ -62,7 +62,7 @@ jobs:
         run: |
           ls -R applications/electron/dist
   build-windows:
-    name: Build on Windows, Node.js v${{ matrix.node }}
+    name: Build on Windows, ${{ matrix.node }}
     strategy:
       matrix:
         node: ['20.x']
@@ -71,7 +71,7 @@ jobs:
     timeout-minutes: 60
 
     env:
-      NODE_OPTIONS: --max_old_space_size=5120  # Directly set the environment variable for the Windows job
+      NODE_OPTIONS: --max_old_space_size=5120 
 
     steps:
       - name: Checkout
@@ -95,7 +95,7 @@ jobs:
         run: yarn build:electronCICD
 
       - name: Packaging
-        run: yarn --cwd applications/electron package:cicd --arch ${{ matrix.arch }}
+        run: yarn --cwd applications/electron package:cicd
 
       - name: Cleanup artifacts Win
         run: |
