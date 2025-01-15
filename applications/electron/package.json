@@ -137,8 +137,9 @@
     "start": "electron scripts/theia-electron-main.js --plugins=local-dir:../../plugins",
     "start:debug": "yarn start --log-level=debug",
     "package": "yarn clean:dist && yarn rebuild && electron-builder -c.mac.identity=null --publish never",
-    "package:prod": "yarn deploy",
-    "deploy": "yarn clean:dist && yarn rebuild && electron-builder --mac.identity=null --publish always --x64 --arm64",
+    "package:prod": "yarn clean:dist && yarn rebuild && electron-builder -c.mac.identity=null --publish always",
+    "package:cicd": "yarn deploy",
+    "deploy": "yarn clean:dist && yarn rebuild && electron-builder --mac.identity=null --publish always",
     "package:preview": "yarn clean:dist && yarn rebuild && electron-builder -c.mac.identity=null --dir",
     "update:checksum": "ts-node scripts/update-checksum.ts",
     "update:blockmap": "ts-node scripts/update-blockmap.ts",
@@ -147,5 +148,38 @@
     "test": "mocha --timeout 60000 \"./test/*.spec.js\"",
     "lint": "eslint --ext js,jsx,ts,tsx scripts && eslint --ext js,jsx,ts,tsx test",
     "lint:fix": "eslint --ext js,jsx,ts,tsx scripts --fix && eslint --ext js,jsx,ts,tsx test -fix"
+  },
+  "build": {
+    "appId": "com.example.app",
+    "mac": {
+      "target": [
+        "dmg",       
+        "zip"
+      ],
+      "arch": [
+        "x64",       
+        "arm64"      
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"       
+      ],
+      "arch": [
+        "x64",      
+        "ia32",     
+        "arm64"     
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",  
+        "deb"       
+      ],
+      "arch": [
+        "x64",      
+        "arm64"    
+      ]
+    }
   }
 }
