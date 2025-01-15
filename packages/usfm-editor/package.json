@@ -37,7 +37,8 @@
     "build": "tsc && tsconfig-replace-paths --project tsconfig.json",
     "production": "yarn run build",
     "watch": "tsc -w",
-    "test": "jest --config configs/jest.config.ts"
+    "test": "jest --config configs/jest.config.ts",
+    "productionCICD": "yarn run build"
   },
   "theiaExtensions": [
     {

@@ -41,7 +41,7 @@ jobs:
         run: yarn
 
       - name: Build project
-        run: yarn build:prod
+        run: yarn build:electronCICD
 
       - name: Packaging
         run: yarn --cwd applications/electron package:prod
@@ -90,7 +90,7 @@ jobs:
         run: yarn
 
       - name: Build project
-        run: yarn build:prod
+        run: yarn build:electronCICD
 
       - name: Packaging
         run: yarn --cwd applications/electron package:prod
