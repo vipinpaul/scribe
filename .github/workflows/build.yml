@@ -8,7 +8,7 @@ on:
 jobs:
 
   build-linux:
-    name: Build on Linux, Node.js v${{ matrix.node }}
+    name: Build on Linux, Node.js v${{ matrix.arch }}
     strategy:
       matrix:
         node: ['20.x']
