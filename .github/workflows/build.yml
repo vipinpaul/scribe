@@ -95,7 +95,7 @@ jobs:
         run: yarn build:electronCICD
 
       - name: Packaging
-        run: yarn --cwd applications/electron package:cicd
+        run: yarn --cwd applications/electron package:cicdWin --${{ matrix.arch }}
 
       - name: Cleanup artifacts Win
         run: |

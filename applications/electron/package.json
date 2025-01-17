@@ -140,6 +140,7 @@
     "package:prod": "yarn clean:dist && yarn rebuild && electron-builder -c.mac.identity=null --publish always",
     "package:cicd": "yarn deploy",
     "package:cicdLinux": "yarn clean:dist && yarn rebuild && electron-builder --linux",
+    "package:cicdWin": "yarn clean:dist && yarn rebuild && electron-builder --win",
     "deploy": "yarn clean:dist && yarn rebuild && electron-builder --mac.identity=null --publish always",
     "package:preview": "yarn clean:dist && yarn rebuild && electron-builder -c.mac.identity=null --dir",
     "update:checksum": "ts-node scripts/update-checksum.ts",
@@ -156,30 +157,17 @@
       "target": [
         "dmg",       
         "zip"
-      ],
-      "arch": [
-        "x64",       
-        "arm64"      
       ]
     },
     "win": {
       "target": [
         "nsis"       
-      ],
-      "arch": [
-        "x64",      
-        "ia32",     
-        "arm64"     
       ]
     },
     "linux": {
       "target": [
         "AppImage",  
         "deb"       
-      ],
-      "arch": [
-        "x64",      
-        "arm64"    
       ]
     }
   }
