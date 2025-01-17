@@ -46,7 +46,7 @@ jobs:
 
       - name: Packaging for Linux
         run: |
-          yarn --cwd applications/electron package:cicd
+          yarn --cwd applications/electron package:cicdLinux
 
       - name: Cleanup artifacts (Linux)
         run: |
