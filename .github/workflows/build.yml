@@ -46,7 +46,7 @@ jobs:
 
       - name: Packaging for Linux
         run: |
-          yarn --cwd applications/electron package:cicdLinux
+          yarn --cwd applications/electron package:cicdLinux --${{ matrix.arch }}
 
       - name: Cleanup artifacts (Linux)
         run: |
