@@ -11,7 +11,7 @@ jobs:
     name: Build on Linux, ${{ matrix.arch }}
     strategy:
       matrix:
-        node: ['16.x']
+        node: ['18.x']
         arch: ['x64', 'arm64']
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -51,7 +51,7 @@ jobs:
 
       - name: Enable debug logging
         run: echo "DEBUG=electron-builder*" >> $GITHUB_ENV
-        
+
       - name: Build project
         run: yarn build:electronCICD
 
