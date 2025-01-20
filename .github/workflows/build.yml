@@ -67,53 +67,54 @@ jobs:
       - name: List artifacts-Linux
         run: |
           ls -R applications/electron/dist
-  # build-windows:
-  #   name: Build on Windows, ${{ matrix.node }}
-  #   strategy:
-  #     matrix:
-  #       node: ['20.x']
-  #       arch: ['x86', 'x64', 'arm64']
-  #   runs-on: windows-2019
-  #   timeout-minutes: 60
 
-  #   env:
-  #     NODE_OPTIONS: --max_old_space_size=5120 
+  build-windows:
+    name: Build on Windows - ${{ matrix.arch }}
+    strategy:
+      matrix:
+        node: ['20.10.0']
+        arch: ['x86', 'x64', 'arm64']
+    runs-on: windows-2019
+    timeout-minutes: 60
 
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
+    env:
+      NODE_OPTIONS: --max_old_space_size=5120 
 
-  #     - name: Use Node.js ${{ matrix.node }}
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: ${{ matrix.node }}
-  #         registry-url: 'https://registry.npmjs.org'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-  #     - name: Verify memory setting (Windows)
-  #       run: echo $NODE_OPTIONS
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: 'https://registry.npmjs.org'
 
-  #     - name: Install dependencies
-  #       run: yarn
+      - name: Verify memory setting (Windows)
+        run: echo $NODE_OPTIONS
 
-  #     - name: Build project
-  #       run: yarn build:electronCICD
+      - name: Install dependencies
+        run: yarn
 
-  #     - name: Packaging
-  #       run: yarn --cwd applications/electron package:cicdWin --${{ matrix.arch }}
+      - name: Build project
+        run: yarn build:electronCICD
 
-  #     - name: Cleanup artifacts Win
-  #       run: |
-  #         mkdir artifacts
-  #         mv applications/electron/dist/*.exe artifacts
+      - name: Packaging
+        run: yarn --cwd applications/electron package:cicdWin --${{ matrix.arch }}
 
-  #     - name: Upload artifacts(Windows)
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: Scribe
-  #         path: artifacts
+      - name: Cleanup artifacts Win
+        run: |
+          mkdir artifacts
+          mv applications/electron/dist/*.exe artifacts
 
-  #     - name: List artifacts-Windows
-  #       run: |
-  #         dir artifacts
+      - name: Upload artifacts(Windows)
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scribe
+          path: artifacts
+
+      - name: List artifacts-Windows
+        run: |
+          dir artifacts
