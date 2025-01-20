@@ -11,7 +11,7 @@ jobs:
     name: Build on Linux, ${{ matrix.arch }}
     strategy:
       matrix:
-        node: ['18.x']
+        node: ['20.10.0']
         arch: ['x64', 'arm64']
     runs-on: ubuntu-latest
     timeout-minutes: 60
