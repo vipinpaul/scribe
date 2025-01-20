@@ -46,7 +46,7 @@ jobs:
 
       - name: Rebuild Electron native modules
         run: |
-          yarn add electron-rebuild --dev
+          yarn add electron-rebuild --dev --ignore-workspace-root-check
           yarn run electron-rebuild
 
       - name: Enable debug logging
