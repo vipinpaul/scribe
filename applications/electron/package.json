@@ -109,7 +109,7 @@
     "app-builder-lib": "24.13.2",
     "chai": "^4.3.10",
     "concurrently": "^3.5.0",
-    "electron": "^28.2.8",
+    "electron": "28.2.8",
     "electron-builder": "24.13.2",
     "electron-chromedriver": "^28.2.8",
     "electron-mocha": "^12.3.0",
@@ -152,6 +152,7 @@
     "lint:fix": "eslint --ext js,jsx,ts,tsx scripts --fix && eslint --ext js,jsx,ts,tsx test -fix"
   },
   "build": {
+    "electronVersion": "28.2.8",
     "appId": "com.example.app",
     "mac": {
       "target": [
