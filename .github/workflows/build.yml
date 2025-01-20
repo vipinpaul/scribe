@@ -44,19 +44,19 @@ jobs:
       - name: Check installed Electron version
         run: yarn why electron
 
-      - name: Install Electron
-        run: yarn add electron@^28.2.8 --dev --ignore-workspace-root-check
+      # - name: Install Electron
+      #   run: yarn add electron@^28.2.8 --dev --ignore-workspace-root-check
 
-      - name: Verify Electron installation
-        run: yarn list electron
+      # - name: Verify Electron installation
+      #   run: yarn list electron
 
-      - name: Check installed Electron version again
-        run: yarn why electron
-        
-      - name: Rebuild Electron native modules
-        run: |
-          yarn add electron-rebuild --dev --ignore-workspace-root-check
-          yarn run electron-rebuild
+      # - name: Check installed Electron version again
+      #   run: yarn why electron
+
+      # - name: Rebuild Electron native modules
+      #   run: |
+      #     yarn add electron-rebuild --dev --ignore-workspace-root-check
+      #     yarn run electron-rebuild
 
       - name: Enable debug logging
         run: echo "DEBUG=electron-builder*" >> $GITHUB_ENV
