@@ -61,7 +61,7 @@ jobs:
       - name: Upload dist(Linux)
         uses: actions/upload-artifact@v4
         with:
-          name: Scribe
+          name: Scribe-${{ github.run_id }}
           path: applications/electron/dist
 
       - name: List artifacts-Linux
@@ -115,7 +115,7 @@ jobs:
       - name: Upload artifacts(Windows)
         uses: actions/upload-artifact@v4
         with:
-          name: Scribe
+          name: Scribe-${{ github.run_id }}
           path: artifacts
 
       - name: List artifacts-Windows
