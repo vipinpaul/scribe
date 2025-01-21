@@ -61,7 +61,7 @@ jobs:
       - name: Upload dist(Linux)
         uses: actions/upload-artifact@v4
         with:
-          name: Scribe-${{ matrix.arch }}-${{ github.run_id }}-${{ steps.timestamp.outputs.time }}
+          name: Scribe-linux-${{ matrix.arch }}-${{ github.run_id }}-${{ steps.timestamp.outputs.time }}
           path: applications/electron/dist
 
       - name: List artifacts-Linux
@@ -115,7 +115,7 @@ jobs:
       - name: Upload artifacts(Windows)
         uses: actions/upload-artifact@v4
         with:
-          name: Scribe-${{ matrix.arch }}-${{ github.run_id }}-${{ steps.timestamp.outputs.time }}
+          name: Scribe-win-${{ matrix.arch }}-${{ github.run_id }}-${{ steps.timestamp.outputs.time }}
           path: artifacts
 
       - name: List artifacts-Windows
