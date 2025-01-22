@@ -106,7 +106,7 @@ jobs:
 
       - name: Packaging
         run: |
-          if [ "${{ matrix.arch }}" == "msi" ]; then
+          if [ "${{ matrix.arch }}" === "msi" ]; then
             yarn --cwd applications/electron cicd --msi
           else
             yarn --cwd applications/electron cicd --win --${{ matrix.arch }}
@@ -117,7 +117,7 @@ jobs:
         run: |
           mkdir artifacts
           mv applications/electron/dist/*.exe artifacts
-          if [ "${{ matrix.arch }}" == "msi" ]; then
+          if [ "${{ matrix.arch }}" === "msi" ]; then
             mv applications/electron/dist/*.msi artifacts
           fi
         shell: bash
