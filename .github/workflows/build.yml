@@ -111,6 +111,7 @@ jobs:
           else
             yarn --cwd applications/electron cicd --win --${{ matrix.arch }}
           fi
+        shell: bash
 
       - name: Cleanup artifacts Win
         run: |
@@ -119,6 +120,7 @@ jobs:
           if [ "${{ matrix.arch }}" == "msi" ]; then
             mv applications/electron/dist/*.msi artifacts
           fi
+        shell: bash
 
       - name: Upload artifacts(Windows)
         uses: actions/upload-artifact@v4
