@@ -107,9 +107,9 @@ jobs:
       - name: Packaging
         run: |
           if [ "${{ matrix.arch }}" == "msi" ]; then
-            yarn --cwd applications/electron cicd --msi
+            yarn --cwd applications/electron package:cicd --msi
           else
-            yarn --cwd applications/electron cicd --win --${{ matrix.arch }}
+            yarn --cwd applications/electron package:cicd --win --${{ matrix.arch }}
           fi
         shell: bash
 
