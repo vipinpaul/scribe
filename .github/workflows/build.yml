@@ -52,7 +52,7 @@ jobs:
 
       - name: Packaging for Linux
         run: |
-          yarn --cwd applications/electron package:cicdLinux --${{ matrix.arch }}
+          yarn --cwd applications/electron package:cicd --linux --${{ matrix.arch }}
 
       - name: Cleanup artifacts (Linux)
         run: |
@@ -105,22 +105,12 @@ jobs:
         run: yarn build:electronCICD
 
       - name: Packaging
-        run: |
-          if [ "${{ matrix.arch }}" == "msi" ]; then
-            yarn --cwd applications/electron package:cicd --msi
-          else
-            yarn --cwd applications/electron package:cicd --win --${{ matrix.arch }}
-          fi
-        shell: bash
+        run: yarn --cwd applications/electron package:cicd --win --${{ matrix.arch }}
 
       - name: Cleanup artifacts Win
         run: |
           mkdir artifacts
           mv applications/electron/dist/*.exe artifacts
-          if [ "${{ matrix.arch }}" == "msi" ]; then
-            mv applications/electron/dist/*.msi artifacts
-          fi
-        shell: bash
 
       - name: Upload artifacts(Windows)
         uses: actions/upload-artifact@v4
