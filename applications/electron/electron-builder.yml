@@ -31,6 +31,7 @@ win:
     icon: resources/icons/WindowsLauncherIcon/TheiaIDE.ico
     target:
         - nsis
+        - msi
     publish:
         provider: generic
         url: 'https://download.eclipse.org/theia/ide/${version}/windows'
