@@ -73,7 +73,7 @@ jobs:
     strategy:
       matrix:
         node: ['20.10.0']
-        arch: ['ia32', 'x64', 'arm64']
+        arch: ['ia32', 'x64', 'arm64', 'msi']
     runs-on: windows-2019
     timeout-minutes: 60
 
@@ -105,12 +105,20 @@ jobs:
         run: yarn build:electronCICD
 
       - name: Packaging
-        run: yarn --cwd applications/electron package:cicdWin --${{ matrix.arch }}
+        run: |
+          if [ "${{ matrix.arch }}" == "msi" ]; then
+            yarn --cwd applications/electron cicd --msi
+          else
+            yarn --cwd applications/electron cicd --win --${{ matrix.arch }}
+          fi
 
       - name: Cleanup artifacts Win
         run: |
           mkdir artifacts
           mv applications/electron/dist/*.exe artifacts
+          if [ "${{ matrix.arch }}" == "msi" ]; then
+            mv applications/electron/dist/*.msi artifacts
+          fi
 
       - name: Upload artifacts(Windows)
         uses: actions/upload-artifact@v4
