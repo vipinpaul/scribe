@@ -127,7 +127,7 @@ jobs:
     name: Build on macOS - ${{ matrix.arch }}
     strategy:
       matrix:
-        node: ['18.x']  # Using Node.js 18.x (LTS)
+        node: ['20.10.0']
         arch: ['x64', 'arm64']
     runs-on: macos-latest
     timeout-minutes: 60
