@@ -31,7 +31,6 @@ win:
     icon: resources/icons/WindowsLauncherIcon/TheiaIDE.ico
     target:
         - nsis
-        - msi
     publish:
         provider: generic
         url: 'https://download.eclipse.org/theia/ide/${version}/windows'
@@ -56,24 +55,6 @@ linux:
     publish:
         provider: generic
         url: 'https://download.eclipse.org/theia/ide/latest/linux'
-msi:
-  artifactName: ${productName}.${ext}
-  additionalWixArgs: []
-  oneClick: false 
-  perMachine: false 
-  createDesktopShortcut: true
-  createStartMenuShortcut: true
-  menuCategory: true
-  runAfterFinish: false 
-  shortcutName: "${productName} Shortcut" 
-  upgradeCode: "a5f63bb5-0b32-4d94-8bb2-e74c4e3ec0a9"
-  license: LICENSE 
-  warningsAsErrors: true 
-  icon: resources/icons/WindowsLauncherIcon/TheiaIDE.ico 
-  installerIcon: resources/icons/WindowsLauncherIcon/TheiaIDE.ico
-  uninstallerIcon: resources/icons/WindowsLauncherIcon/TheiaIDE.ico 
-  installerSidebar: resources/icons/InstallerSidebarImage/164-314Windows.bmp
-  uninstallerSidebar: resources/icons/InstallerSidebarImage/164-314Windows.bmp
 nsis:
     menuCategory: true
     oneClick: false

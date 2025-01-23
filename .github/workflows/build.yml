@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - cicd
 
 jobs:
 
@@ -52,7 +53,7 @@ jobs:
 
       - name: Packaging for Linux
         run: |
-          yarn --cwd applications/electron package:cicd --linux --${{ matrix.arch }}
+          yarn --cwd applications/electron package:cicdLinux --${{ matrix.arch }}
 
       - name: Cleanup artifacts (Linux)
         run: |
@@ -73,7 +74,7 @@ jobs:
     strategy:
       matrix:
         node: ['20.10.0']
-        arch: ['ia32', 'x64', 'arm64', 'msi']
+        arch: ['ia32', 'x64', 'arm64']
     runs-on: windows-2019
     timeout-minutes: 60
 
@@ -105,7 +106,7 @@ jobs:
         run: yarn build:electronCICD
 
       - name: Packaging
-        run: yarn --cwd applications/electron package:cicd --win --${{ matrix.arch }}
+        run: yarn --cwd applications/electron package:cicdWin --${{ matrix.arch }}
 
       - name: Cleanup artifacts Win
         run: |
