@@ -53,7 +53,7 @@ jobs:
 
       - name: Packaging for Linux
         run: |
-          yarn --cwd applications/electron package:cicdLinux --${{ matrix.arch }}
+          yarn --cwd applications/electron package:cicd --linux --${{ matrix.arch }}
 
       - name: Cleanup artifacts (Linux)
         run: |
@@ -106,7 +106,7 @@ jobs:
         run: yarn build:electronCICD
 
       - name: Packaging
-        run: yarn --cwd applications/electron package:cicdWin --${{ matrix.arch }}
+        run: yarn --cwd applications/electron package:cicd --win --${{ matrix.arch }}
 
       - name: Cleanup artifacts Win
         run: |
@@ -165,7 +165,7 @@ jobs:
         run: yarn build:electronCICD
 
       - name: Packaging for macOS
-        run: yarn --cwd applications/electron package:cicdMac --${{ matrix.arch }}
+        run: yarn --cwd applications/electron package:cicd --mac --${{ matrix.arch }}
 
       - name: Cleanup artifacts (macOS)
         run: |
