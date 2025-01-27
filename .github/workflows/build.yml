@@ -146,9 +146,6 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install ripgrep (workaround)
-        run: brew install ripgrep
-
       - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
@@ -158,11 +155,8 @@ jobs:
       - name: Verify memory setting (macOS)
         run: echo $NODE_OPTIONS
 
-      - name: Clear Yarn Cache
-        run: yarn cache clean
-
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn
 
       - name: Check installed Electron version
         run: yarn why electron
@@ -177,7 +171,6 @@ jobs:
         run: |
           mkdir artifacts
           mv applications/electron/dist/*.dmg artifacts
-
       - name: Upload artifacts (macOS)
         uses: actions/upload-artifact@v4
         with:

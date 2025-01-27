@@ -63,7 +63,7 @@
     "@theia/editor-preview": "1.51.0",
     "@theia/electron": "1.51.0",
     "@theia/external-terminal": "1.51.0",
-    "@theia/file-search": "1.57.0",
+    "@theia/file-search": "1.51.0",
     "@theia/filesystem": "1.51.0",
     "@theia/getting-started": "1.51.0",
     "@theia/keymaps": "1.51.0",
