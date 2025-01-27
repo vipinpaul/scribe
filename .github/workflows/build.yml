@@ -156,7 +156,7 @@ jobs:
         run: echo $NODE_OPTIONS
 
       - name: Install dependencies
-        run: yarn
+        run: yarn --verbose
 
       - name: Check installed Electron version
         run: yarn why electron
